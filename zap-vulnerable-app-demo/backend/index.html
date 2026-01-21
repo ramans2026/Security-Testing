@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vulnerable Banking Search Demo</title>
+  </head>
+  <body>
+    <h1>Vulnerable Banking Search</h1>
+    <p>
+      This is a deliberately vulnerable demo app for practicing OWASP ZAP security testing.
+    </p>
+    <ul>
+      <li>Possible SQL injection-style tests via <code>?q=' OR '1'='1</code></li>
+      <li>Reflected XSS tests via <code>?q=&lt;script&gt;alert('xss')&lt;/script&gt;</code></li>
+      <li>Open CORS and missing security headers for ZAP to detect.</li>
+    </ul>
+
+    <form method="get" action="/search">
+      <label for="q">Search products:</label>
+      <input type="text" id="q" name="q" placeholder="loan, card, ' OR '1'='1, &lt;script&gt;..." size="60" />
+      <button type="submit">Search</button>
+    </form>
+
+    <p>
+      Or call the JSON API directly: <a href="/api/products">/api/products</a>
+    </p>
+  </body>
+</html>
